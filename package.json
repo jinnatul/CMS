@@ -1,7 +1,7 @@
 {
   "name": "cms",
   "version": "1.0.0",
-  "description": "A task for Job-Interview",
+  "description": "courier management system",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
