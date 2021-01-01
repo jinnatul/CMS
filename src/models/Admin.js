@@ -11,6 +11,18 @@ const adminSchema = new mongoose.Schema({
       ref: 'Branch',
     },
   ],
+  officers: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: 'Officer',
+    },
+  ],
+  transports: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: 'Transport',
+    },
+  ],
 });
 
 if (!mongoose.models.Admin) {

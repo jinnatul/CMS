@@ -26,6 +26,9 @@ const transportSchema = new mongoose.Schema({
     type: mongoose.Schema.ObjectId,
     ref: 'Branch',
   },
+  lastModified: {
+    type: Date,
+  },
 });
 
 if (!mongoose.models.Transport) {

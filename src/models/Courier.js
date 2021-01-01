@@ -33,17 +33,13 @@ const courierSchema = new mongoose.Schema({
   cashOnDeliveryAmount: {
     type: Number,
   },
-  branch: {
+  fromLocation: {
     type: mongoose.Schema.ObjectId,
     ref: 'Branch',
   },
-  fromLocation: {
-    type: mongoose.Schema.ObjectId,
-    ref: 'Location',
-  },
   toLocation: {
     type: mongoose.Schema.ObjectId,
-    ref: 'Location',
+    ref: 'Branch',
   },
   sender: {
     type: mongoose.Schema.ObjectId,
@@ -57,6 +53,12 @@ const courierSchema = new mongoose.Schema({
     type: mongoose.Schema.ObjectId,
     ref: 'Status',
   },
+  orderComments: [
+    {
+      type: mongoose.Schema.ObjectId,
+      ref: 'OrderComments',
+    },
+  ],
   createdAt: {
     type: Date,
   },
