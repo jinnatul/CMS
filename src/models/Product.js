@@ -1,12 +1,11 @@
 import mongoose from 'mongoose';
 
-const courierSchema = new mongoose.Schema({
+const productSchema = new mongoose.Schema({
   productCode: {
     type: String,
   },
   description: {
     type: String,
-    required: [true, 'provide courier description'],
   },
   specialInstructions: {
     type: String,
@@ -67,8 +66,26 @@ const courierSchema = new mongoose.Schema({
   },
 });
 
-if (!mongoose.models.Courier) {
-  mongoose.model('Courier', courierSchema);
+// Query middleware
+productSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'fromLocation',
+    select: '-__v -transports',
+  }).populate({
+    path: 'toLocation',
+    select: '-__v -transports',
+  }).populate({
+    path: 'sender',
+    select: '-__v',
+  }).populate({
+    path: 'recipient',
+    select: '-__v',
+  });
+  next();
+});
+
+if (!mongoose.models.Product) {
+  mongoose.model('Product', productSchema);
 }
 
-export default mongoose.models.Courier;
+export default mongoose.models.Product;
