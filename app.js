@@ -1,7 +1,7 @@
 import express from 'express';
 import morgan from 'morgan';
 import globalErrorHandler from './src/controllers/errorController';
-import routers from './src/routers/router';
+import Routers from './src/routers/router';
 import AppError from './utils/AppError';
 
 const app = express();
@@ -15,7 +15,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // application endpoints
-app.use('/api/v1', routers);
+app.use('/api/v1', Routers);
 
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));

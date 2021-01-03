@@ -43,4 +43,5 @@ export const createProduct = catchAsync(async (req, res, next) => {
   const productInfo = await Product.create(body);
   return sendData(res, 201, productInfo);
 });
+
 export const getProducts = getAll(Product);
